@@ -17,14 +17,15 @@ class PiratesController < ApplicationController
 
     def update 
         @pirate = Pirate.find(params[:id])
-        @pirate.update(name: params[:name])
+        @pirate.update(name: params[:name], age: params[:age])
 
         render json: @pirate
     end
 
-    def destroy 
+    def destroy
         @pirate = Pirate.find(params[:id])
-
+        @pirate.destroy
+        
         render json: {message: "Pirate #{@pirate.id} has been deleted!"}
     end
    
